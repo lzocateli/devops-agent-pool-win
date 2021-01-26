@@ -11,25 +11,31 @@ LABEL maintainer="Lincoln Zocateli <lzocateli00@outlook.com>" \
     org.label-schema.schema-version="1.0.0" \
     org.label-schema.docker.cmd="docker run --name devops-agent-win \
     -d \
-    -e VS_TENANT=your vsts tenant \
-    -e AGENT_PAT=your vsts PAT \
-    -e AGENT_POOL=your vsts pool \
-    --volume=/var/run/docker.sock:/var/run/docker.sock \
-    -v /home/my dir/teste:/vsts-agent-pool/_works \
-    lzocateli/azdv-agent-win:vX.Y.Z " \
+    -e AZP_URL=https://dev.azure.com/your_subscription/ \
+    -e AZP_TOKEN=your PAT \
+    -e AZP_POOL=your agent pool name \
+    -e AZP_AGENT_NAME=your agent name \
+    -e AZP_WORK=_work \
+    -v D:/UserData/dk-agent-01:C:/agent/$AZP_WORK \
+    lzocateli/azdv-agent-win:X.Y.Z " \
     org.label-schema.docker.cmd.test="docker run --name devops-agent-win \
     -ti \
-    -e VS_TENANT=your vsts tenant \
-    -e AGENT_PAT=your vsts PAT \
-    -e AGENT_POOL=your vsts pool \
+    -e AZP_URL=https://dev.azure.com/your_subscription/ \
+    -e AZP_TOKEN=your PAT \
+    -e AZP_POOL=your agent pool name \
+    -e AZP_AGENT_NAME=your agent name \
+    -e AZP_WORK=_work \
     --rm \
-    --volume=/var/run/docker.sock:/var/run/docker.sock \
-    -v /home/my dir/teste:/vsts-agent-pool/_works \
-    lzocateli/azdv-agent-win:vX.Y.Z "
+    -v D:/UserData/dk-agent-01:C:/agent/$AZP_WORK \
+    lzocateli/azdv-agent-win:X.Y.Z "
 
 
-WORKDIR /azp
+WORKDIR /devops-agent-pool-win
 
-COPY start.ps1 .
+RUN git clone -b main https://github.com/lzocateli00/devops-agent-pool-win.git \
+ && cp ./devops-agent-pool-win/agent/*.ps1 . \
+ && rm -r devops-agent-pool-win 
 
-CMD powershell .\start.ps1
+RUN ./install-agent.ps1 C:/agent
+
+CMD ["/devops-agent-pool-win/ConfigureOrRun.ps1"]

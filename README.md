@@ -61,12 +61,6 @@ If you do not want to use a volume on the host, just remove the -v line from doc
 
 ## Maintainers
 
-* [email: Lincoln Zocateli](mailto:lincoln@nuuve.com.br), [facebook: lincoln.zocateli](https://www.facebook.com/lincoln.zocateli), [twitter: @lincolnzocateli](https://twitter.com/lincolnzocateli)
+* [email: Lincoln Zocateli](mailto:lzocateli00@outlook.com), [facebook: Lincoln Zocateli](https://www.facebook.com/lzocateli00), [twitter: @lzocateli00](https://twitter.com/lzocateli00)
 
-## License
 
-This software is open source, licensed under the Apache License, Version 2.0.
-See [LICENSE](https://github.com/lincolnzocateli/vsts-deployment-pool/blob/master/LICENSE) for details.
-Check out the terms of the license before you contribute, fork, copy or do anything
-with the code. If you decide to contribute you agree to grant copyright of all your contribution to this project, and agree to
-mention clearly if do not agree to these terms. Your work will be licensed with the project at Apache V2, along the rest of the code.

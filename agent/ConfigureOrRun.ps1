@@ -1,17 +1,19 @@
-converter para powhershell
+# [CmdletBinding()] 
+# param(
+#   [Parameter(Position = 0, Mandatory, ValueFromPipeline)]
+#   [string]$pathAgent
+# )
 
-echo Starting $(pwd)/configureOrRun.sh
+$pathAgent = "$PWD/.credentials" 
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-work_dir="$DIR/_works/$(hostname)"
+Write-Host "Starting: $($MyInvocation.MyCommand.Definition)"
 
-unset DOCKER_PASSWORD
-unset DOCKER_USERNAME
+if (-not (Test-Path $pathAgent)) {
+  Write-Host "Configuring agent...."
+  . $pathAgent/configureAndRun.ps1
+}
+else {
+  Write-Host "Executing background agent...."
+  . $pathAgent/runAgent.ps1
+}
 
-if ! [ -d $work_dir ]; then
-  echo Executing agent config...
-  . $DIR/configureAndRun.sh
-else
-  echo Executando background agent...
-  . $DIR/runAgent.sh
-fi
