@@ -11,7 +11,7 @@
             "script": "./install-agent.ps1",
             "cwd": "${workspaceFolder}/agent",
             "args": [
-                "-pathAgent /Temp"
+                "-pathAgent d:/Temp"
             ]
         },
         {
@@ -21,7 +21,7 @@
             "script": "./ConfigureOrRun.ps1",
             "cwd": "${workspaceFolder}/agent",
             "args": [
-                "-pathAgent /Temp"
+                "-pathAgent d:/Temp"
             ]
         }
     ]

@@ -8,18 +8,24 @@ param(
 
 Write-Host "Starting: $($MyInvocation.MyCommand.Definition)"
 
-
-New-Item $pathAgent -ItemType directory | Out-Null
+if (-not (Test-Path $pathAgent)) {
+  New-Item $pathAgent -ItemType directory | Out-Null
+}
   
 Set-Location $pathAgent
-$destinationPack = "$(Get-Location)\agent.zip"
+
+
+if (-not (Test-Path $pathAgent/bin/Agent.Listener.dll)) {
+  $destinationPack = "$(Get-Location)\agent.zip"
   
-Write-Host "Downloading Azure Pipelines agent... $destinationPack" -ForegroundColor Cyan
+  Write-Host "Downloading Azure Pipelines agent... $destinationPack" -ForegroundColor Cyan
 
-$agentVersion = "2.181.0"
-Invoke-WebRequest -Uri "https://vstsagentpackage.azureedge.net/agent/$agentVersion/vsts-agent-win-x64-$agentVersion.zip" `
-                  -OutFile $destinationPack
+  $agentVersion = "2.181.0"
+  Invoke-WebRequest `
+    -Uri "https://vstsagentpackage.azureedge.net/agent/$agentVersion/vsts-agent-win-x64-$agentVersion.zip" `
+    -OutFile $destinationPack
 
-Expand-Archive -Path $destinationPack -DestinationPath "$pathAgent/"
+  Expand-Archive -Path $destinationPack -DestinationPath $pathAgent
 
-Remove-Item -Path $destinationPack
+  Remove-Item -Path $destinationPack
+}

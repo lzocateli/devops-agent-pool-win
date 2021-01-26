@@ -14,14 +14,17 @@ if (-not (Test-Path $pathAgent)) {
 }
 
 
-Write-Host "Stopping Agent.Listener ..."
-Write-Host "$(Get-Process -Name "Agent.Listener")"
-#Stop-Process -Name "Agent.Listener"
+$agentName = "Agent.Listener"
+Write-Host "Stopping $agentName ..."
+Get-Process -Name $agentName
+Stop-Process -Name $agentName
 
 
 Write-Host "Starting configuration for $env:COMPUTERNAME ...  in $pathAgent"
 ./ConfigureAgent.ps1 $pathAgent
 
-
-Write-Host "Configuration done. Starting run for $env:COMPUTERNAME ...  in $pathAgent"
-./RunAgent.ps1 $pathAgent
+[Int32]$zero = 0
+if ($LASTEXITCODE -eq $zero) {
+  Write-Host "Configuration done. Starting run for $env:COMPUTERNAME ...  in $pathAgent"
+  ./RunAgent.ps1 $pathAgent
+}
