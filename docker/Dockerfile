@@ -32,10 +32,11 @@ LABEL maintainer="Lincoln Zocateli <lzocateli00@outlook.com>" \
 
 WORKDIR /devops-agent-pool-win
 
-RUN git clone -b main https://github.com/lzocateli00/devops-agent-pool-win.git \
- && cp ./devops-agent-pool-win/agent/*.ps1 . \
- && rm -r devops-agent-pool-win 
+# RUN git clone -b main https://github.com/lzocateli00/devops-agent-pool-win.git \
+#  && cp ./devops-agent-pool-win/agent/*.ps1 . \
+#  && rm -r devops-agent-pool-win 
 
-RUN ./install-agent.ps1 C:/agent
+# RUN ./install-agent.ps1 C:/agent
 
-CMD ["/devops-agent-pool-win/ConfigureOrRun.ps1 C:/agent"]
+# CMD ["/devops-agent-pool-win/ConfigureOrRun.ps1 C:/agent"]
+CMD [ "powhershell" ]
