@@ -1,19 +1,22 @@
-# [CmdletBinding()] 
-# param(
-#   [Parameter(Position = 0, Mandatory, ValueFromPipeline)]
-#   [string]$pathAgent
-# )
+#Esse script esta sendo executado dentro do container
+[CmdletBinding()] 
+param(
+  [Parameter(Position = 0, Mandatory, ValueFromPipeline)]
+  [string]$pathAgent = "C:\agent"
+)
 
-$pathAgent = "$PWD/.credentials" 
 
 Write-Host "Starting: $($MyInvocation.MyCommand.Definition)"
 
-if (-not (Test-Path $pathAgent)) {
-  Write-Host "Configuring agent...."
-  . $pathAgent/configureAndRun.ps1
+
+$pathAgentCredential = "$pathAgent/.credentials" 
+
+if (-not (Test-Path $pathAgentCredential)) {
+  Write-Host "ConfigureAndRun agent ...."
+  ./ConfigureAndRun.ps1 $pathAgent
 }
 else {
-  Write-Host "Executing background agent...."
-  . $pathAgent/runAgent.ps1
+  Write-Host "RunAgent background ...."
+  ./RunAgent.ps1 $pathAgent
 }
 

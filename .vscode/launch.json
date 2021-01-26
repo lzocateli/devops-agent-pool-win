@@ -5,10 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "PowerShell: Launch Current File",
+            "name": "PowerShell: install-agent",
             "type": "PowerShell",
             "request": "launch",
             "script": "./install-agent.ps1",
+            "cwd": "${workspaceFolder}/agent",
+            "args": [
+                "-pathAgent /Temp"
+            ]
+        },
+        {
+            "name": "PowerShell: ConfigureOrRun",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./ConfigureOrRun.ps1",
             "cwd": "${workspaceFolder}/agent",
             "args": [
                 "-pathAgent /Temp"

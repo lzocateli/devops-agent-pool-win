@@ -17,5 +17,5 @@ if (Test-Path $fileToCheck -PathType leaf) {
 }
 
 docker login -u $dockerId -p $dockerToken
-docker build -t $dockerId/azdv-agent-win:1.0 .
+docker build -t $dockerId/devops-agent-pool-win:1.0.0 .
 docker images
