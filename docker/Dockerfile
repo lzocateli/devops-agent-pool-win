@@ -43,10 +43,10 @@ RUN Start-Process powershell -Verb runAs; `
 
 
 RUN Start-Process powershell -Verb runAs; `
-    choco install poshgit 
+    choco install poshgit -y
 
 RUN Start-Process powershell -Verb runAs; `
-    choco install vscode
+    choco install vscode -y
 
 WORKDIR /devops-agent-pool-win
 
