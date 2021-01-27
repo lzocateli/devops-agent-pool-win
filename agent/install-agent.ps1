@@ -20,11 +20,14 @@ if (-not (Test-Path $pathAgent/bin/Agent.Listener.dll)) {
   
   Write-Host "Downloading Azure Pipelines agent... $destinationPack" -ForegroundColor Cyan
 
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
   $agentVersion = "2.181.0"
   Invoke-WebRequest `
     -Uri "https://vstsagentpackage.azureedge.net/agent/$agentVersion/vsts-agent-win-x64-$agentVersion.zip" `
     -OutFile $destinationPack
 
+   
   Expand-Archive -Path $destinationPack -DestinationPath $pathAgent
 
   Remove-Item -Path $destinationPack

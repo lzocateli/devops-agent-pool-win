@@ -26,30 +26,30 @@ On a Mac, use Docker for Mac, or directy on Linux, run in bash:
 
 To start a container in detached mode:
 
-````bash
-docker run --name devops-agent-pool-win \
-    -d \
-    -e AZP_URL=https://dev.azure.com/your_subscription/ \
-    -e AZP_TOKEN=your PAT \
-    -e AZP_POOL=your agent pool name \
-    -e AZP_AGENT_NAME=your agent name \
-    -e AZP_WORK=_work \
-    -v D:/UserData/dk-agent-01:C:/agent \
+````pwsh
+docker run --name devops-agent-pool-win `
+    -d `
+    -e AZP_URL=https://dev.azure.com/your_subscription/ `
+    -e AZP_TOKEN=your PAT `
+    -e AZP_POOL=your agent pool name `
+    -e AZP_AGENT_NAME=your agent name `
+    -e AZP_WORK=_work `
+    -v D:/UserData/dk-agent-01:C:/agent `
     lzocateli/devops-agent-pool-win:X.Y.Z 
 ````
 
 To start a container in foreground mode:
 
-````bash
-docker run --name devops-agent-pool-win \
-    -ti \
-    -e AZP_URL=https://dev.azure.com/your_subscription/ \
-    -e AZP_TOKEN=your PAT \
-    -e AZP_POOL=your agent pool name \
-    -e AZP_AGENT_NAME=your agent name \
-    -e AZP_WORK=_work \
-    --rm \
-    -v D:/UserData/dk-agent-01:C:/agent \
+````pwsh
+docker run --name devops-agent-pool-win `
+    -ti `
+    -e AZP_URL=https://dev.azure.com/your_subscription/ `
+    -e AZP_TOKEN=your PAT `
+    -e AZP_POOL=your agent pool name `
+    -e AZP_AGENT_NAME=your agent name `
+    -e AZP_WORK=_work `
+    --rm `
+    -v D:/UserData/dk-agent-01:C:/agent `
     lzocateli/devops-agent-pool-win:latest
 ````
 
