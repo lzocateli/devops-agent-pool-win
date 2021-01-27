@@ -19,3 +19,8 @@ if (-not (Test-Path $fileToCheck -PathType leaf)) {
 docker login -u $dockerId -p $dockerToken
 docker build -t $dockerId/devops-agent-pool-win:1.0.0 .
 docker images
+
+Write-Host "Enter para enviar a imagem para o hub ou CTRL+C para parar"
+pause
+
+docker push $dockerId/devops-agent-pool-win:1.0.0
