@@ -7,7 +7,8 @@ param(
 
 Write-Host "Starting: $($MyInvocation.MyCommand.Definition)"
 
-[Environment]::SetEnvironmentVariable("AZP_TOKEN", '')
+[Environment]::SetEnvironmentVariable("AZP_TOKEN", '', 'Machine')
+[Environment]::SetEnvironmentVariable("AZP_TOKEN", '', 'User')
 
 
 Set-Location $pathAgent

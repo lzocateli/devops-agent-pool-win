@@ -12,7 +12,7 @@ Clear-Host
 
 $fileToCheck = "Dockerfile"
 if (-not (Test-Path $fileToCheck -PathType leaf)) {
-    Write-Error "error: DockerFile not exists in $PWD"
+    Write-Error "error: $fileToCheck not exists in $PWD"
     exit 1
 }
 
