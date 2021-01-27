@@ -27,20 +27,12 @@ RUN Start-Process powershell -Verb runAs; `
 RUN Start-Process powershell -Verb runAs; `
     choco install poshgit -y
 
-RUN Start-Process powershell -Verb runAs; `
-    choco install vscode -y
-
 WORKDIR /agent
 
 RUN git config --global user.name 'CblDevOps'; ` 
     git config --global user.email CblDevOps@cat.com; `
     git config --global http.https://localhost.sslVerify false; `
     git config --global https.https://localhost.sslVerify false; `
-    git config --global core.editor 'code -wait --new-window'; `
-    git config --global diff.tool vscode; `
-    git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'; `
-    git config --global merge.tool vscode; `
-    git config --global mergetool.vscode.cmd 'code --wait $MERGED'; `
     git clone -b main https://github.com/lzocateli00/devops-agent-pool-win.git `
     $HOME/devops-agent-pool-win; `
     cp $HOME/devops-agent-pool-win/agent/*.ps1 .; `
@@ -48,4 +40,4 @@ RUN git config --global user.name 'CblDevOps'; `
 
 RUN ./install-agent.ps1 $PWD
 
-CMD ["./ConfigureOrRun.ps1 $PWD"]
+CMD ["./ConfigureOrRun.ps1", "$PWD" ]
