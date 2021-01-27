@@ -40,4 +40,4 @@ RUN git config --global user.name 'CblDevOps'; `
 
 RUN ./install-agent.ps1 $PWD
 
-CMD ["./ConfigureOrRun.ps1", "$PWD" ]
+CMD ["ConfigureOrRun.ps1", "%CD%" ]
