@@ -27,6 +27,9 @@ RUN Start-Process powershell -Verb runAs; `
 RUN Start-Process powershell -Verb runAs; `
     choco install poshgit -y
 
+RUN Start-Process powershell -Verb runAs; `
+    choco install nodejs.install -y
+
 WORKDIR /agent
 
 RUN git config --global user.name 'CblDevOps'; ` 
