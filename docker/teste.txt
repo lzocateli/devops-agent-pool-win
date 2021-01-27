@@ -1,1 +1,1 @@
-docker run --name teste -it mcr.microsoft.com/windows/servercore:ltsc2016-amd64 powhershell
+docker run --name teste -it mcr.microsoft.com/windows/servercore:ltsc2016-amd64 powershell

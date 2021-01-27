@@ -39,4 +39,4 @@ WORKDIR /devops-agent-pool-win
 # RUN ./install-agent.ps1 C:/agent
 
 # CMD ["/devops-agent-pool-win/ConfigureOrRun.ps1 C:/agent"]
-CMD [ "powhershell" ]
+CMD [ "powershell" ]
