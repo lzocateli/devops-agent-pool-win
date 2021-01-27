@@ -27,8 +27,21 @@ RUN Start-Process powershell -Verb runAs; `
 RUN Start-Process powershell -Verb runAs; `
     choco install poshgit -y
 
-RUN Start-Process powershell -Verb runAs; `
-    choco install nodejs.install -y
+# RUN Start-Process powershell -Verb runAs; `
+#     choco install nodejs -y
+RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
+    mkdir c:/UserApps; `
+    Set-Item -Path Env:nodeVersion -Value "v14.15.4"; `
+    Invoke-WebRequest `
+    -Uri "https://nodejs.org/dist/$($Env:nodeVersion)/node-$($Env:nodeVersion)-win-x64.zip" `
+    -OutFile c:/UserApps/nodejs.zip; `
+    Expand-Archive -Path c:/UserApps/nodejs.zip -DestinationPath c:/UserApps; `
+    Rename-Item -Path c:/UserApps/node-$($Env:nodeVersion)-win-x64 -NewName c:/UserApps/nodejs; `
+    Remove-Item -Path c:/UserApps/nodejs.zip; `
+    c:/UserApps/nodejs/nodevars.bat; `
+    node --version
+
+
 
 WORKDIR /agent
 

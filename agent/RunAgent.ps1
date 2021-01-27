@@ -7,9 +7,8 @@ param(
 
 Write-Host "Starting: $($MyInvocation.MyCommand.Definition)"
 
-if (-not [string]::IsNullOrWhiteSpace($env:AZP_TOKEN)) {
-  Remove-Item $Env:AZP_TOKEN
-}
+[Environment]::SetEnvironmentVariable("AZP_TOKEN", '')
+
 
 Set-Location $pathAgent
     

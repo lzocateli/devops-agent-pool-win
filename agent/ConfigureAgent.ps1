@@ -34,8 +34,6 @@ if ([string]::IsNullOrWhiteSpace($env:AZP_WORK)) {
 $pathAgentCredential = "$pathAgent/.credentials" 
 if (-not (Test-Path $pathAgentCredential)) {
 
-    $PAT = $env:AZP_TOKEN
-
     $ActualPath = $PWD
 
     Set-Location $pathAgent
@@ -46,7 +44,7 @@ if (-not (Test-Path $pathAgentCredential)) {
         --url $env:AZP_URL `
         --pool $env:AZP_POOL `
         --auth PAT `
-        --token $PAT `
+        --token $env:AZP_TOKEN `
         --agent $env:AZP_AGENT_NAME `
         --work $env:AZP_WORK `
         --unattended
