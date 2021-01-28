@@ -27,7 +27,12 @@ $CodeVersion = "1.0.0"
 $imageName = "devops-agent-pool-win"
 $imageTag = "1.0.0"
 
-
+docker build `
+  --build-arg BUILD_DATE=$BuildDate `
+  --build-arg VERSION=$CodeVersion `
+  --build-arg VCS_URL=$GitUrl `
+  --build-arg VCS_REF=$GitCommit `
+	-t "$dockerId/$imageName:$imageTag" .
 
 docker images
 
