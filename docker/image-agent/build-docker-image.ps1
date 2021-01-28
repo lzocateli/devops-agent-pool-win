@@ -16,13 +16,25 @@ if (-not (Test-Path $fileToCheck -PathType leaf)) {
     exit 1
 }
 
-$imageTag = "devops-agent-pool-win:1.0.0"
 
 docker login -u $dockerId -p $dockerToken
-docker build -t $dockerId/$imageTag .
+
+
+$BuildDate = date -u +"%Y-%m-%dT%H:%M:%SZ"
+$GitUrl = git config --get remote.origin.url
+$GitCommit = git rev-parse --short HEAD
+$CodeVersion = "1.0.0"
+$imageName = "devops-agent-pool-win"
+$imageTag = "1.0.0"
+
+
+
 docker images
 
 Write-Host "Enter para enviar a imagem para o hub ou CTRL+C para parar"
 pause
 
-docker push $dockerId/$imageTag 
+docker tag "$dockerId/$imageName:$imageTag" "$dockerId/$imageName:latest"
+
+docker push "$dockerId/$imageName:$imageTag" 
+docker push "$dockerId/$imageName:latest"
