@@ -7,8 +7,10 @@
 
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/lzocateli/devops-agent-pool-win.svg)](https://registry.hub.docker.com/u/lzocateli/devops-agent-pool-win)
 [![Stars on Docker Hub](https://img.shields.io/docker/stars/lzocateli/devops-agent-pool-win.svg)](https://registry.hub.docker.com/u/lzocateli/devops-agent-pool-win) 
+
 [![](https://images.microbadger.com/badges/image/lzocateli/devops-agent-pool-win.svg)](https://microbadger.com/images/lzocateli/devops-agent-pool-win "Get your own image badge on microbadger.com")
 
+[![](https://images.microbadger.com/badges/version/lzocateli/devops-agent-pool-win.svg)](https://microbadger.com/images/lzocateli/devops-agent-pool-win "Get your own version badge on microbadger.com")
 
 ## Configuration
 
