@@ -43,12 +43,11 @@ To start a container in foreground mode:
 ````pwsh
 docker run --name devops-agent-pool-win `
     -ti `
+    --rm `
     -e AZP_URL=https://dev.azure.com/your_subscription/ `
     -e AZP_TOKEN=your PAT `
     -e AZP_POOL=your agent pool name `
     -e AZP_AGENT_NAME=your agent name `
-    -e AZP_WORK=_work `
-    --rm `
     -e AZP_WORK=G:\_work `
     -v D:/UserData/dk-agent-01:C:/data `
     lzocateli/devops-agent-pool-win:1.0.0 
