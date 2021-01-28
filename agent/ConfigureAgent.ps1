@@ -37,12 +37,13 @@ if (-not (Test-Path $pathAgentCredential)) {
     $ActualPath = $PWD
     $PAT = $env:AZP_TOKEN
     
-    [Environment]::SetEnvironmentVariable("AZP_TOKEN", '', 'Machine')
-    [Environment]::SetEnvironmentVariable("AZP_TOKEN", '', 'User')
+    $env:AZP_TOKEN = ""
+    
 
     Set-Location $pathAgent
  
     Write-Host "Executing config.cmd CONFIGURE in $PWD ..." -ForegroundColor Cyan
+
 
     ./config.cmd `
         --url $env:AZP_URL `

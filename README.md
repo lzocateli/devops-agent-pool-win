@@ -33,9 +33,9 @@ docker run --name devops-agent-pool-win `
     -e AZP_TOKEN=your PAT `
     -e AZP_POOL=your agent pool name `
     -e AZP_AGENT_NAME=your agent name `
-    -e AZP_WORK=_work `
-    -v D:/UserData/dk-agent-01:C:/agent `
-    lzocateli/devops-agent-pool-win:X.Y.Z 
+    -e AZP_WORK=G:\_work `
+    -v D:/UserData/dk-agent-01:C:/data `
+    lzocateli/devops-agent-pool-win:1.0.0 
 ````
 
 To start a container in foreground mode:
@@ -49,8 +49,9 @@ docker run --name devops-agent-pool-win `
     -e AZP_AGENT_NAME=your agent name `
     -e AZP_WORK=_work `
     --rm `
-    -v D:/UserData/dk-agent-01:C:/agent `
-    lzocateli/devops-agent-pool-win:latest
+    -e AZP_WORK=G:\_work `
+    -v D:/UserData/dk-agent-01:C:/data `
+    lzocateli/devops-agent-pool-win:1.0.0 
 ````
 
 The -v parameter indicates that a volume is being mounted on the container host, 

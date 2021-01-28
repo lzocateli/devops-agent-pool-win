@@ -16,11 +16,9 @@ if (-not (Test-Path $fileToCheck -PathType leaf)) {
     exit 1
 }
 
+$imageTag = "devops-winbase:1.0.0"
+
 docker login -u $dockerId -p $dockerToken
-docker build -t $dockerId/devops-agent-pool-win:1.0.0 .
+docker build -t $dockerId/$imageTag .
 docker images
 
-Write-Host "Enter para enviar a imagem para o hub ou CTRL+C para parar"
-pause
-
-docker push $dockerId/devops-agent-pool-win:1.0.0

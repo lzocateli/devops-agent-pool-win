@@ -7,7 +7,7 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
 
 LABEL maintainer="Lincoln Zocateli <lzocateli00@outlook.com>" `
     org.label-schema.description="Azure DevOps agent build with base Windows Server Core" `
-    org.label-schema.name="devops-agent-pool-win" `
+    org.label-schema.name="devops-winbase" `
     org.label-schema.url="https://github.com/lzocateli00" `
     org.label-schema.vcs-url="https://github.com/lzocateli00/devops-agent-pool-win/tree/main" `
     org.label-schema.usage="https://github.com/lzocateli00/devops-agent-pool-win/blob/main/README.md" `
@@ -39,5 +39,3 @@ RUN git config --global user.name 'CblDevOps'; `
     rm -r $HOME/devops-agent-pool-win -Force;
 
 RUN ./install-agent.ps1 $PWD
-
-CMD ["powershell.exe", "-noexit", "-file", "ConfigureOrRun.ps1" ]
