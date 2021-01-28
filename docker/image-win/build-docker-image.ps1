@@ -25,13 +25,15 @@ $GitCommit = git rev-parse --short HEAD
 $CodeVersion = "1.0.0"
 $imageName = "devops-winbase"
 $imageTag = "1.0.0"
+$DockerBuildT = "$dockerId/${imageName}:$imageTag"
+
 
 docker build `
   --build-arg BUILD_DATE=$BuildDate `
   --build-arg VERSION=$CodeVersion `
   --build-arg VCS_URL=$GitUrl `
   --build-arg VCS_REF=$GitCommit `
-	-t "$dockerId/$imageName:$imageTag" .
+	-t $DockerBuildT .
     
 docker images
 

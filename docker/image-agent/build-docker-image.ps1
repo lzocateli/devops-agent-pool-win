@@ -26,20 +26,23 @@ $GitCommit = git rev-parse --short HEAD
 $CodeVersion = "1.0.0"
 $imageName = "devops-agent-pool-win"
 $imageTag = "1.0.0"
+$DockerBuildT = "$dockerId/${imageName}:$imageTag"
+$DockerBuildLatest = "$dockerId/${imageName}:latest"
+
 
 docker build `
   --build-arg BUILD_DATE=$BuildDate `
   --build-arg VERSION=$CodeVersion `
   --build-arg VCS_URL=$GitUrl `
   --build-arg VCS_REF=$GitCommit `
-	-t "$dockerId/$imageName:$imageTag" .
+	-t $DockerBuildT .
 
 docker images
 
 Write-Host "Enter para enviar a imagem para o hub ou CTRL+C para parar"
 pause
 
-docker tag "$dockerId/$imageName:$imageTag" "$dockerId/$imageName:latest"
+docker tag $DockerBuildT $DockerBuildLatest
 
-docker push "$dockerId/$imageName:$imageTag" 
-docker push "$dockerId/$imageName:latest"
+docker push $DockerBuildT 
+docker push $DockerBuildLatest

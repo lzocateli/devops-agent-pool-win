@@ -23,6 +23,16 @@
             "args": [
                 "-pathAgent d:/Temp"
             ]
+        },
+        {
+            "name": "PowerShell: Build-docker-image (win)",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./build-docker-image.ps1",
+            "cwd": "${workspaceFolder}/docker/image-win",
+            "args": [
+                "-dockerId lzocateli -dockertoken xxxx"
+            ]
         }
     ]
 }
