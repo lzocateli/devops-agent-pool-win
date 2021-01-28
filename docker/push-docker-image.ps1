@@ -14,10 +14,6 @@ docker login -u $dockerId -p $dockerToken
 
 $imageName = "devops-agent-pool-win"
 $imageTag = "1.0.0"
-$DockerBuildT = "$dockerId/${imageName}:$imageTag"
-$DockerBuildLatest = "$dockerId/${imageName}:latest"
+$DockerBuildTag = "$dockerId/${imageName}:$imageTag"
 
-docker tag $DockerBuildT $DockerBuildLatest
-
-docker push $DockerBuildT 
-docker push $DockerBuildLatest
+docker push $DockerBuildTag

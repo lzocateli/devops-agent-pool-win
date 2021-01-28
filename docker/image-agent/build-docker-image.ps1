@@ -27,8 +27,6 @@ $CodeVersion = "1.0.0"
 $imageName = "devops-agent-pool-win"
 $imageTag = "1.0.0"
 $DockerBuildT = "$dockerId/${imageName}:$imageTag"
-$DockerBuildLatest = "$dockerId/${imageName}:latest"
-
 
 docker build `
   --build-arg BUILD_DATE=$BuildDate `
@@ -38,11 +36,3 @@ docker build `
 	-t $DockerBuildT .
 
 docker images
-
-Write-Host "Enter para enviar a imagem para o hub ou CTRL+C para parar"
-pause
-
-docker tag $DockerBuildT $DockerBuildLatest
-
-docker push $DockerBuildT 
-docker push $DockerBuildLatest

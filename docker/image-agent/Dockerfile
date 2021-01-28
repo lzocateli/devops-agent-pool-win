@@ -3,6 +3,7 @@
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
+ARG BUILD_NAME="devops-agent-pool-win"
     
 ARG REPO=lzocateli/devops-winbase
 FROM $REPO:1.0.0
@@ -11,7 +12,7 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
 
 LABEL maintainer="Lincoln Zocateli <lzocateli00@outlook.com>" `
     org.label-schema.description="Azure DevOps agent build with base Windows Server Core" `
-    org.label-schema.name="devops-agent-pool-win" `
+    org.label-schema.name=$BUILD_NAME `
     org.label-schema.url="https://github.com/lzocateli00" `
     org.label-schema.vcs-ref=$VCS_REF `
     org.label-schema.vcs-url="https://github.com/lzocateli00/devops-agent-pool-win" `
