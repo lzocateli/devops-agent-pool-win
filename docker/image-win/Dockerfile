@@ -14,6 +14,7 @@ RUN Start-Process powershell -Verb runAs; `
 
 
 RUN Start-Process powershell -Verb runAs; `
+    Enable-PSRemoting -Force; `
     choco install poshgit -y
 
 WORKDIR /agent

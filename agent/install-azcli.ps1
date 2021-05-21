@@ -24,6 +24,8 @@ $scriptAzDevOps = {
 
 }
 
+#Start-Process powershell -Verb runAs;
+
 $so = New-PSSessionOption -SkipCACheck -IdleTimeout 7200000 -OperationTimeout 0 -OutputBufferingMode Block
 $s = New-PSSession -ComputerName $env:COMPUTERNAME -SessionOption $so 
 Invoke-Command -Session $s -ScriptBlock $scriptAzureCLI
