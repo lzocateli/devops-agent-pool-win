@@ -27,8 +27,9 @@ $scriptAzDevOps = {
 #$so = New-PSSessionOption -SkipCACheck -IdleTimeout 7200000 -OperationTimeout 0 -OutputBufferingMode Block
 #$s = New-PSSession -ComputerName $serverName -SessionOption $so 
 $s = New-PSSession –RunAsAdministrator
-
 Invoke-Command -Session $s -ScriptBlock $scriptAzureCLI
-Invoke-Command -Session $s -ScriptBlock $scriptAzDevOps
+
+$s1 = New-PSSession –RunAsAdministrator
+Invoke-Command -Session $s1 -ScriptBlock $scriptAzDevOps
 
 Pause
