@@ -35,17 +35,7 @@ if (-not (Test-Path $pathAgent/bin/Agent.Listener.dll)) {
 
   Remove-Item -Path $destinationPack
 
-  
-  Write-Host "Donwloading and install AzureCLI"
-
-  Invoke-WebRequest `
-    -Uri https://aka.ms/installazurecliwindows `
-    -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
-
-  az upgrade
-
-  Write-Host "Donwloading and install az devops"
-  az extension add --name azure-devops
-  az extension list
-  
+  ./install-azcli.ps1
+  ./install-azdevops.ps1
+    
 }
