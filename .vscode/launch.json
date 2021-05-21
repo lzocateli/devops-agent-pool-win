@@ -5,6 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "PowerShell: build-docker-agent (win)",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./build-docker-agent.ps1",
+            "cwd": "${workspaceFolder}/docker/",
+            "args": [
+                "-dockerId lzocateli -dockertoken xxxxx"
+            ]
+        },
+        {
             "name": "PowerShell: install-agent",
             "type": "PowerShell",
             "request": "launch",
@@ -25,13 +35,13 @@
             ]
         },
         {
-            "name": "PowerShell: Build-docker-image (win)",
+            "name": "PowerShell: Build-docker-image",
             "type": "PowerShell",
             "request": "launch",
             "script": "./build-docker-image.ps1",
             "cwd": "${workspaceFolder}/docker/image-win",
             "args": [
-                "-dockerId lzocateli -dockertoken xxxx"
+                "-dockerId lzocateli -dockertoken xxxxxxxxxxxxx"
             ]
         }
     ]

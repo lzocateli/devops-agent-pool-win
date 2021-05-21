@@ -19,7 +19,7 @@ if ([string]::IsNullOrWhiteSpace($dockerToken)) {
 
     Set-Location ./image-win/
     ./build-docker-image.ps1 -dockerId $dockerId
-    Set-Location ./image-agent/
+    Set-Location ../image-agent/
     ./build-docker-image.ps1 -dockerId $dockerId
 }
 else {
@@ -27,6 +27,6 @@ else {
     
     Set-Location ./image-win/
     ./build-docker-image.ps1 -dockerId $dockerId -dockerToken $dockerToken
-    Set-Location ./image-agent/
+    Set-Location ../image-agent/
     ./build-docker-image.ps1 -dockerId $dockerId -dockerToken $dockerToken
 }
