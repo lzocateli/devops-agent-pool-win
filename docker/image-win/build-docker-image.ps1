@@ -30,7 +30,7 @@ if ($false -eq [string]::IsNullOrWhiteSpace($dockerId)) {
     }
 }
 
-
+# docker pull lzocateli/devops-agent-pool-win:1.0.0
 $imageName = "devops-winbase"
 $imageTag = "1.0.0"
 $DockerBuildT = "$dockerId/${imageName}:$imageTag"
