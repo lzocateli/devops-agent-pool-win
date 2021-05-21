@@ -22,7 +22,10 @@ if (-not (Test-Path $pathAgent/bin/Agent.Listener.dll)) {
 
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
+
   $agentVersion = "2.186.1"
+  Write-Host "Invoking agent version: $agentVersion"
+
   Invoke-WebRequest `
     -Uri "https://vstsagentpackage.azureedge.net/agent/$agentVersion/vsts-agent-win-x64-$agentVersion.zip" `
     -OutFile $destinationPack
