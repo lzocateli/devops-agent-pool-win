@@ -4,6 +4,13 @@ $localScript = $MyInvocation.MyCommand.Source.Replace($MyInvocation.MyCommand.Na
 $scriptName = $MyInvocation.MyCommand.Name
 Write-Host "Start script: $localScript$scriptName at: $(Get-Date)"
   
+$scriptAzDevOps = {
+
+  az extension add --name azure-devops
+  az extension list >azdevops.log
+  
+}
+
 
 Write-Host "Donwloading and install AzureCLI ..."
 
@@ -16,6 +23,4 @@ Start-Process powershell -Verb runAs; `
 
 Write-Host "Donwloading and install az devops ..."
 
-Start-Process powershell -Verb runAs; `
-  az extension add --name azure-devops; `
-  az extension list >azdevops.log;
+Start-Process powershell -ArgumentList "-command (Invoke-Command -ScriptBlock {$scriptAzDevOps})" -Verb runAs -Wait
