@@ -11,7 +11,7 @@
             "script": "./build-docker-agent.ps1",
             "cwd": "${workspaceFolder}/docker/",
             "args": [
-                "-dockerId lzocateli -dockertoken 42e1ed99-8b0a-4fa4-9535-15b309656c66"
+                "-dockerId lzocateli -dockertoken xxxxxx"
             ]
         },
         {
