@@ -36,6 +36,5 @@ if (-not (Test-Path $pathAgent/bin/Agent.Listener.dll)) {
   Remove-Item -Path $destinationPack
 
   ./install-azcli.ps1
-  ./install-azdevops.ps1
     
 }
