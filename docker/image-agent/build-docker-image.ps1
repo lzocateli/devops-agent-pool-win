@@ -1,14 +1,21 @@
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops#windows
+# docker login configure:
+# https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 [CmdletBinding()] 
 param(
-    [Parameter(Position = 0, Mandatory, ValueFromPipeline)]
-    [string]$dockerId,
-    [Parameter(Position = 1, Mandatory, ValueFromPipeline)]
-    [string]$dockerToken
+    [Parameter(Position = 0, ValueFromPipeline)]
+    [string] $dockerId,
+    [Parameter(Position = 1, ValueFromPipeline)]
+    [string] $dockerToken
 )
 
 Clear-Host
+
+$localScript = $MyInvocation.MyCommand.Source.Replace($MyInvocation.MyCommand.Name, "")
+$scriptName = $MyInvocation.MyCommand.Name
+Write-Host "Start script: $localScript$scriptName at: $(Get-Date)"
+
 
 $fileToCheck = "Dockerfile"
 if (-not (Test-Path $fileToCheck -PathType leaf)) {
@@ -16,8 +23,14 @@ if (-not (Test-Path $fileToCheck -PathType leaf)) {
     exit 1
 }
 
-
-docker login -u $dockerId -p $dockerToken
+if ($false -eq [string]::IsNullOrWhiteSpace($dockerId)) {
+  if ([string]::IsNullOrWhiteSpace($dockerToken)) {
+      docker login -u $dockerId --password-stdin
+  }
+  else {
+      docker login -u $dockerId -p $dockerToken
+  }
+}
 
 
 $BuildDate = date -u +"%Y-%m-%dT%H:%M:%SZ"

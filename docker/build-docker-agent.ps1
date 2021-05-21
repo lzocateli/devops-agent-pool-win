@@ -14,17 +14,19 @@ $localScript = $MyInvocation.MyCommand.Source.Replace($MyInvocation.MyCommand.Na
 $scriptName = $MyInvocation.MyCommand.Name
 Write-Host "Start script: $localScript$scriptName at: $(Get-Date)"
 
-
 if ([string]::IsNullOrWhiteSpace($dockerToken)) {
     docker login -u $dockerId --password-stdin
+
+    Set-Location ./image-win/
+    ./build-docker-image.ps1 -dockerId $dockerId
+    Set-Location ./image-agent/
+    ./build-docker-image.ps1 -dockerId $dockerId
 }
 else {
     docker login -u $dockerId -p $dockerToken
+    
+    Set-Location ./image-win/
+    ./build-docker-image.ps1 -dockerId $dockerId -dockerToken $dockerToken
+    Set-Location ./image-agent/
+    ./build-docker-image.ps1 -dockerId $dockerId -dockerToken $dockerToken
 }
-
-
-$imageName = "devops-agent-pool-win"
-$imageTag = "1.0.0"
-$DockerBuildTag = "$dockerId/${imageName}:$imageTag"
-
-docker push $DockerBuildTag
