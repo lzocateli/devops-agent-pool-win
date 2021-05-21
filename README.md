@@ -59,6 +59,13 @@ The -v parameter indicates that a volume is being mounted on the container host,
 so it will be possible to keep the _work folder even if the container is not running.
 If you do not want to use a volume on the host, just remove the -v line from docker run.
 
+## Step by Step
+- git clone from this repository
+- Edit file /devops-agent-pool-win/agent/install-agent.ps1, change variable $agentVersion = "2.186.1"
+- cd /devops-agent-pool-win/docker
+- execute: build-docker-agent.ps1 -dockerId xxxxx -dockerToken yyyyyyyyyyyyy
+- A docker image will be created, run the command docker run (described above) or run-container.ps1 (which should be in your path)
+
 ## Maintainers
 
 * [email: Lincoln Zocateli](mailto:lzocateli00@outlook.com), [facebook: Lincoln Zocateli](https://www.facebook.com/lzocateli00), [twitter: @lzocateli00](https://twitter.com/lzocateli00)
