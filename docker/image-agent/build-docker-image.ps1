@@ -10,7 +10,7 @@ param(
     [string] $dockerToken
 )
 
-Clear-Host
+Write-Host "================================================================================"
 
 $localScript = $MyInvocation.MyCommand.Source.Replace($MyInvocation.MyCommand.Name, "")
 $scriptName = $MyInvocation.MyCommand.Name

@@ -30,3 +30,5 @@ $s = New-PSSession –RunAsAdministrator
 
 Invoke-Command -Session $s -ScriptBlock $scriptAzureCLI
 Invoke-Command -Session $s -ScriptBlock $scriptAzDevOps
+
+Pause
