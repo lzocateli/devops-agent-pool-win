@@ -26,9 +26,12 @@ $scriptAzDevOps = {
 
 #Start-Process powershell -Verb runAs;
 
-$so = New-PSSessionOption -SkipCACheck -IdleTimeout 7200000 -OperationTimeout 0 -OutputBufferingMode Block
-$s = New-PSSession -ComputerName $env:COMPUTERNAME -SessionOption $so 
-Invoke-Command -Session $s -ScriptBlock $scriptAzureCLI
+# $so = New-PSSessionOption -SkipCACheck -IdleTimeout 7200000 -OperationTimeout 0 -OutputBufferingMode Block
+# $s = New-PSSession -ComputerName $env:COMPUTERNAME -SessionOption $so 
+# Invoke-Command -Session $s -ScriptBlock $scriptAzureCLI
 
-$s1 = New-PSSession -ComputerName $env:COMPUTERNAME -SessionOption $so 
-Invoke-Command -Session $s1 -ScriptBlock $scriptAzDevOps
+# $s1 = New-PSSession -ComputerName $env:COMPUTERNAME -SessionOption $so 
+# Invoke-Command -Session $s1 -ScriptBlock $scriptAzDevOps
+
+Start-Process powershell -ArgumentList "-noexit -command (Invoke-Command -ScriptBlock {$scriptAzureCLI})" -Verb runAs 
+Start-Process powershell -ArgumentList "-noexit -command (Invoke-Command -ScriptBlock {$scriptAzDevOps})" -Verb runAs 
