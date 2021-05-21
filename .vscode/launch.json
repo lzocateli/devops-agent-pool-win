@@ -5,13 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "PowerShell Launch Current File",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${file}",
+            "cwd": "${file}"
+        },
+        {
             "name": "PowerShell: build-docker-agent (win)",
             "type": "PowerShell",
             "request": "launch",
             "script": "./build-docker-agent.ps1",
             "cwd": "${workspaceFolder}/docker/",
             "args": [
-                "-dockerId lzocateli -dockertoken xxxxxx"
+                "-dockerId lzocateli -dockertoken xxxxxxxx"
             ]
         },
         {
