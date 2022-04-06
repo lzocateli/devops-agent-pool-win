@@ -5,7 +5,7 @@ FROM $REPO:ltsc2016-amd64
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
 
-ENV NO_PROXY=cat.com HTTP_PROXY=http://proxy.cat.com:80 HTTPS_PROXY=http://proxy.cat.com:80
+ENV NO_PROXY=yourdns.com HTTP_PROXY=http://proxy.yourdns.com:80 HTTPS_PROXY=http://proxy.yourdns.com:80
 
 RUN Start-Process powershell -Verb runAs; `
     Set-ExecutionPolicy Bypass -Scope Process -Force; `
